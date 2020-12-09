@@ -122,16 +122,16 @@ body {
 </head>
 <body>
 
-<div class="header">
+<!-- <div class="header">
   <h1>My Website</h1>
   <p>A <b>responsive</b> website created by me.</p>
-</div>
+</div> -->
 
 <div class="navbar">
   <a href="#" class="active">Home</a>
   <a href="#">Link</a>
   <a href="#">Link</a>
-  <a href="admin/product/index.php" class="right">Link</a>
+  <a href="/sale/admin/product/index.php" class="right">Link</a>
 </div>
 
 <div class="row">

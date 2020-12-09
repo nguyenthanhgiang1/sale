@@ -1,4 +1,40 @@
-.head{
+.side1 {
+    -ms-flex: 20%;
+    /* IE10 */
+    flex: 20%;
+    background-color: #234A57;
+    padding: 20px;
+}
+
+.main-view {
+    -ms-flex: 80%;
+    /* IE10 */
+    flex: 80%;
+    background-color: white;
+    padding: 20px;
+}
+
+.fakeimg-h {
+    background-color: turquoise;
     width: 100%;
-    he
+    padding: 20px;
+}
+
+.footer-web {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+.h5-center {
+    text-align: center;
+}
+
+.color-ad {
+    background-color: #F8F9FA;
+    padding: 10px;
+}
+
+.bg-bt {
+    background-color: #C1C1C1;
 }
