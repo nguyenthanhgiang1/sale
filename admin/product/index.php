@@ -1,3 +1,11 @@
+<?php 
+$conn=new mysqli('localhost','root','','sale');
+$sql='select * 
+from product a, type b
+where a.id_type=b.id_type';
+$result=mysqli_query($conn,$sql);
+$pro=$result;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,28 +23,29 @@
   <?php include("../../includes/adminSidebar.php") ?>
   <div class="col-md-9">
      <div class="main-view">
-    <h5><a href="#" class="btn btn-success">them vao</a> <a href="#"  class="btn btn-success">xoa di</a></h5>
+    <h5><a href="create.php" class="btn btn-success">Thêm sản phẩm</a> <a href="index.php"  class="btn btn-success">Quản lý sản phẩm</a></h5>
     <h2 class="h5-center pb-2">Quản lý sản phẩm</h2>
     <div class="color-ad" style="min-height:350px" >
             <div class="row">
               <div class="col-1"><h5>Stt</h5></div>
               <div class="col-3"><h5>Tên sản phẩm</h5></div>
-              <div class="col-2"><h5>Giá bán</h5></div>
               <div class="col-2"><h5>Thể loại</h5></div>
+              <div class="col-2"><h5>Giá bán</h5></div>
               <div class="col-4"><h5>Thao tác</h5></div>
             </div>
             <hr>
+            <?php foreach($pro as $key =>$p): ?>
             <div class="row">
-              <div class="col-1">20</div>
-              <div class="col-3">Kem đánh răng</div>
-              <div class="col-2">30000</div>
-              <div class="col-2">Dồ gia dung can</div>
-              <div class="col-1">Xóa</div>
-              <div class="col-1">Sửa</div>
-              <div class="col-1">Hiện</div>
+              <div class="col-1"><?php echo $key+1 ?></div>
+              <div class="col-3"><?php echo $p['title'] ?></div>
+              <div class="col-2"><?php echo $p['name'] ?></div>
+              <div class="col-2"><?php echo $p['price'] ?></div>
+              <div class="col-1"> <a href="#" class="btn-outline-warning a-text">Sửa</a></div>
+              <div class="col-1"> <a href="#" class="btn-outline-success a-text">view</a></div>
+              <div class="col-1"> <a href="#" class="btn-outline-danger a-text">Xoa</a></div>
             </div>
             <hr>
-            
+            <?php endforeach; ?>
        </div> 
        <!-- het vung bang -->
      </div>

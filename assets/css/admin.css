@@ -38,3 +38,7 @@
 .bg-bt {
     background-color: #C1C1C1;
 }
+
+.a-text {
+    text-decoration: none !important;
+}
