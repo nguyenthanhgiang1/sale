@@ -1,10 +1,25 @@
 <?php 
 $conn=new mysqli('localhost','root','','sale');
+
+if(isset($_GET['del_id'])){//xoa theo id
+  //adminOnly();  // loi chi admin
+  $id=$_GET['del_id'];
+  $sql= "DELETE FROM product WHERE id = $id";
+$result=mysqli_query($conn,$sql);
+  // $count =delete($table,$id);
+ // $_SESSION['message']='Topic deleted successfully'; 
+ // $_SESSION['type']='success';
+  //header('index.php');
+  //exit();
+}
+
+
 $sql='select * 
 from product a, type b
 where a.id_type=b.id_type';
 $result=mysqli_query($conn,$sql);
 $pro=$result;
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,9 +55,9 @@ $pro=$result;
               <div class="col-3"><?php echo $p['title'] ?></div>
               <div class="col-2"><?php echo $p['name'] ?></div>
               <div class="col-2"><?php echo $p['price'] ?></div>
-              <div class="col-1"> <a href="#" class="btn-outline-warning a-text">Sửa</a></div>
+              <div class="col-1"> <a href="edit.php?id=<?php echo $p['id'];?>" class="btn-outline-warning a-text">Sửa</a></div>
               <div class="col-1"> <a href="#" class="btn-outline-success a-text">view</a></div>
-              <div class="col-1"> <a href="#" class="btn-outline-danger a-text">Xoa</a></div>
+              <div class="col-1"> <a href="index.php?del_id=<?php echo $p['id'];?>" class="btn-outline-danger a-text">Xoa</a></div>
             </div>
             <hr>
             <?php endforeach; ?>

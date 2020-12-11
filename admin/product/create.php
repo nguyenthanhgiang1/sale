@@ -1,22 +1,27 @@
 <?php 
 $conn=new mysqli('localhost','root','','sale');
-
+//lay ra bang the loai
 $sql='select * 
 from type';
 $result=mysqli_query($conn,$sql);
 $type=$result;
-
+//up load product
 if(isset($_POST['add-product'])){
     $title=$_POST['title'];
     $body=$_POST['body'];
-    // $img=$_POST['img'];
+     //upload anh
+      $img=time()."-".$_FILES["img"]["name"];
+      $tname=$_FILES['img']['tmp_name'];
+      $uploads_dir='../../assets/image/';
+      move_uploaded_file($tname,$uploads_dir.'/'.$img);
+
     $pulish=1;
     if(empty($_POST['pulish']))
     $pulish=0;
     $price=$_POST['price'];
     $id_type=$_POST['id_type'];
-$sql ="INSERT INTO product (title, body,pulish,price,id_type)
- VALUES ('$title','$body','$pulish','$price','$id_type')";
+$sql ="INSERT INTO product (title,body,img,pulish,price,id_type)
+ VALUES ('$title','$body','$img','$pulish','$price','$id_type')";
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
 } else {
