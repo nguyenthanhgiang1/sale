@@ -129,7 +129,7 @@ body {
 
 <div class="navbar">
   <a href="#" class="active">Home</a>
-  <a href="#">Link</a>
+  <a href="test.php">Sản phẩm</a>
   <a href="#">Link</a>
   <a href="/sale/admin/product/index.php" class="right">Link</a>
 </div>

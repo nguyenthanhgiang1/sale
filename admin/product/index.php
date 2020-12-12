@@ -75,6 +75,6 @@ $conn->close();
        <h2>Footer</h2>
 </div>
 </div>
-<script type="text/javascript" src="assets/boot/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../assets/boot/js/bootstrap.js"></script>
 </body>
 </html>
