@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand  bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/sale">Navbar</a>
+    <a class="navbar-brand" href="/sale/test.php">Navbar</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
