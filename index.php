@@ -39,15 +39,20 @@ if(!$conn){
     <nav class="navbar navbar-expand  bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/sale">Trang chủ</a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Sản phẩm</a>
+                    <a class="nav-link" href="#">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Liên hệ</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav justify-content-end">
                 <li class="nav-item">
-                    <!-- <a class="nav-link" href="/sale/admin/product/index.php" tabindex="-1" aria-disabled="true">*</a> -->
+                    <a class="nav-link" href="registry.php">Đăng ký</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php">Đăng nhập</a>
                 </li>
             </ul>
         </div>
@@ -102,7 +107,7 @@ if(!$conn){
             </div>
             <div class="col-lg-9">
                 <div class="row">
-                    <div class="col-7"><h5>
+                    <div class="col-lg-7 col-md-6 col-6"><h5>
                         <?php
                              if(isset($_GET['search'])){
                                 echo "Kết quả tìm kiếm : ".$result -> num_rows." sản phẩm";
@@ -110,14 +115,13 @@ if(!$conn){
                              else echo "Danh sách sản phẩm";
                         ?>
                        </h5></div>
-                    <div class="col-5">
-                           <form action="index.php" method="GET">
-                           <div class="row">
-                           <div class="col-8"><input  class="form-control" name="sea" placeholder="Nhập từ khóa" value="<?php if($t!=""){echo $t;} ?>"  type="text"></div>
-                           <div class="col-4"><input type="submit" name="search" class=" btn btn-primary" value="Tìm kiếm"></div></div>
+                    <div class="col-lg-5 col-md-6 col-6">
+                           <form class="d-flex" action="index.php" method="GET">
+                              <input class="form-control me-2" type="search" name="sea" placeholder="Nhập từ khóa" value="<?php if($t!=""){echo $t;} ?>" aria-label="Search">
+                              <button class="btn btn-outline-success" name="search" type="submit">Tìm kiếm</button>
                            </form>
-                       
                     </div>
+                   
                 </div>
                 <div class="row">
                 <?php foreach($result as $key => $value): ?>

@@ -1,34 +1,54 @@
-<?php
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Dang nhap</h3>
+    <form action="login.submit.php" method="POST">
+          <table>
+             <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username"></td>
+             </tr>
+             <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password"></td>
+             </tr>
+             <tr>
+                <td colspan="2">
+                    <button type="submit" name="submit">Login</button>
+                    <button type="reset">Reset</button>
+                </td>
+             </tr>
+          </table>
+    </form>
+</body>
+</html> -->
 
-$conn= mysqli_connect('localhost','root','','sale');
-if(!$conn){
-    echo "ket noi that bai roi";
-}
-if(isset($_POST['submit']) && $_POST["username"] != "" && $_POST['password'] != "" && $_POST['repassword'] != ""){
-    //xu ly loi
-    $username=$_POST['username'];
-    $password=$_POST['password'];
-    $repassword=$_POST['repassword'];
-    $level=0;
-    $error=0;
-    if($password != $repassword){
-        echo "Đăng ký tài khoản thất bại";
-        $error=1;
-    }
-    $sql='select * from user where username = "$username" ';
-    $old=mysqli_query($conn,$sql);
-    $password=md5($password);
-    if(mysqli_num_rows($old)>0){
-        echo "Đăng ký tài khoản thất bại";
-        $error=1;
-    }
-    if($error===0){
-        $sql="insert into user (username,password,level) values ('$username','$password','$level')";
-        mysqli_query($conn,$sql);
-        echo "Chúc mừng bạn đã đăng nhập thành công";
-    }
-}
-      
+
+<?php
+  session_start();
+  $conn= mysqli_connect('localhost','root','','sale');
+  if(!$conn){
+      echo "ket noi that bai roi";
+  }
+   if(isset($_POST['submit']) && $_POST['username'] != '' && $_POST['password']!=''){
+         $username=$_POST['username'];
+         $password=$_POST['password'];
+         $password=md5($password);
+         $sql="select * from user where username='$username' and password='$password'";
+         $user=mysqli_query($conn,$sql);
+         if(mysqli_num_rows($user)>0){
+             echo "ban da dang nhap thanh cong";
+             header('location:admin/product');
+             $_SESSION['user']=$username;
+         }else{
+             echo "ban da nhap sai tai khoan hoac mat khau";
+         }
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,9 +87,9 @@ if(isset($_POST['submit']) && $_POST["username"] != "" && $_POST['password'] != 
     <!-- ---------------------------------------------------------------------------------------------------------- -->
     <div class="container mt-4 mb-4">
     <div class="row">
-        <h3 class="text-center mb-3">Đăng ký tại đây</h3>
+        <h3 class="text-center mb-3">Đăng nhập tại đây</h3>
         <div class="col-lg-4 col-md-6 col-sm-8 col-9 bg-success rounded" style="margin:0 auto;">
-            <form class="mt-5 mb-5" action="registry.php" method="POST">
+            <form class="mt-5 mb-5" action="login.php" method="POST">
                 <div class="m-3">
                     <label for="exampleInputEmail1" class="form-label">Tài khoản</label>
                     <input type="text" class="form-control" name="username" id="exampleInputEmail1" >
@@ -78,15 +98,7 @@ if(isset($_POST['submit']) && $_POST["username"] != "" && $_POST['password'] != 
                     <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
                     <input type="password" class="form-control" name="password" id="exampleInputPassword1">
                 </div>
-                <div class="m-3">
-                    <label for="exampleInputPassword1" class="form-label">Nhập lại mật khẩu</label>
-                    <input type="password" class="form-control" name="repassword" id="exampleInputPassword1">
-                </div>
-                <div class="m-3">
-                    <label for="exampleInputEmail1" class="form-label">Nhập email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <button  type="submit" name="submit" class="ms-3 btn btn-primary">Dăng ký</button>
+                <button  type="login" name="submit" class="ms-3 btn btn-primary">Dăng nhập</button>
             </form>
         </div>
     </div>
