@@ -18,29 +18,7 @@ if(!empty($_GET['id'])){
 $result = mysqli_query($conn,"select * from product a, type b where a.id_type=b.id_type and id=".$id." LIMIT 1");
 $row = mysqli_fetch_assoc($result);}
 //up load product
-if(isset($_POST['edit-product'])){
-    $title=$_POST['title'];
-    $body=$_POST['body'];
-     //upload anh
-      $img=time()."-".$_FILES["img"]["name"];
-      $tname=$_FILES['img']['tmp_name'];
-      $uploads_dir='../../assets/image/';
-      move_uploaded_file($tname,$uploads_dir.'/'.$img);
 
-    $pulish=1;
-    if(empty($_POST['pulish']))
-    $pulish=0;
-    $price=$_POST['price'];
-    $id_type=$_POST['id_type'];
-
-    $sql=" UPDATE product SET title='$title', body = '$body',img='$img' ,pulish = '$pulish',price='$price',id_type='$id_type' WHERE  id = 9";
-if ($conn->query($sql) === TRUE) {
-  header('location:index.php');
-  exit();
-} else {
-  echo "record edit Error: " . $sql . "<br>" . $conn->error;
-}
-}
 
 
 $conn->close();
@@ -66,7 +44,8 @@ $conn->close();
     <h2 class="h5-center pb-2">Sửa sản phẩm</h2>
     <div class="color-ad" style="min-height:350px" >
     <!-- --------------------------------------------------------------------------------------------------------- -->
- <form  action="edit.php" method="post" enctype="multipart/form-data">
+ <form  action="/sale/app/controllers/product.php" method="post" enctype="multipart/form-data">
+ <input type="hidden" name="id" value="<?php echo $id ?>">
   <div class="form-group mt-2">
     <label for="exampleInputEmail1">Tên sản phẩm</label>
     <input type="text" class="form-control" name="title" aria-describedby="emailHelp" value="<?php echo $row['title']; ?>">
