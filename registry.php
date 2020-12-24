@@ -1,5 +1,4 @@
 <?php
-
 $conn= mysqli_connect('localhost','root','','sale');
 if(!$conn){
     echo "ket noi that bai roi";

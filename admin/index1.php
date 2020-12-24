@@ -1,5 +1,9 @@
 <?php 
 $conn=new mysqli('localhost','root','','sale');
+session_start();
+if(!$_SESSION['level']==1){
+    header('location:/sale/login.php');
+}
 
 if(isset($_GET['del_id'])){//xoa theo id
   //adminOnly();  // loi chi admin

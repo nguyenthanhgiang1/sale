@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!$_SESSION['level']==1){
+    header('location:/sale/login.php');
+}
+?>
 <nav class="navbar navbar-expand  bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/sale">Navbar</a>

@@ -28,8 +28,14 @@
              $pas=$row['password'];
              if($use==$username && $password==$pas){
                  //vao admin
-                
-                 header('location:admin/product');
+                $_SESSION['level']=$row['level'];
+                $_SESSION['username']=$username;
+                if( $_SESSION['level']==1){
+                    header('location:admin/product');
+                }else{
+                    header('location:/sale');
+                }
+              
                 //  $_SESSION['user']=$username;
              }else{
                 array_push($error,"Thông tin đăng nhập sai");
