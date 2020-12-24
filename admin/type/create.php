@@ -33,7 +33,7 @@ $conn->close();
         <?php include("../../includes/adminSidebar.php") ?>
         <div class="col-md-9">
             <div class="main-view">
-                <h5><a href="create.php" class="btn btn-success">Thêm thể loại</a> <a href="index.php" class="btn btn-success">Quản lý thể loại</a></h5>
+                <h5><a href="create.php" class="btn btn-success">Thêm thể loại</a> <a href="index.php" class="btn btn-success">Xem thể loại</a></h5>
                 <h2 class="h5-center pb-2">Quản lý thể loại sản phẩm</h2>
                 <div class="color-ad" style="min-height:350px">
                     <!-- --------------------------------------------------------------------------------------------------------- -->

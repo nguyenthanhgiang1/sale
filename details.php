@@ -2,8 +2,14 @@
 $conn= mysqli_connect('localhost','root','','sale');
 if(!$conn){
     echo "ket noi that bai roi";
-}
-         $sql="select * from product a, type b where a.id_type=b.id_type";
+}              //  --------------------
+$v=$_GET['id'];
+$sql="select * from product where id=$v";
+$result=mysqli_query($conn,$sql);
+$view=mysqli_fetch_assoc($result);
+// -----------------------
+$tt=$view['id_type'];
+         $sql="select * from product a, type b where a.id_type=b.id_type and a.id_type=$tt";
 
          $t="";
          if(isset($_GET['search'])){
@@ -18,9 +24,9 @@ if(!$conn){
             and a.id_type= $v";
         }
          $result=mysqli_query($conn,$sql);
-
          $sql='select * from type';
          $type=mysqli_query($conn,$sql);
+  
          $conn->close(); 
 ?>
     <!DOCTYPE html>
@@ -115,7 +121,7 @@ if(!$conn){
                              if(isset($_GET['search'])){
                                 echo "Kết quả tìm kiếm : ".$result -> num_rows." sản phẩm";
                              }
-                             else echo "Danh sách sản phẩm";
+                             else echo "Thông tin sản phẩm";
                         ?>
                             </h5>
                         </div>
@@ -127,14 +133,47 @@ if(!$conn){
                         </div>
 
                     </div>
-                    <div class="row">
+                    <div class="row mt-4">
+                        <div class="col-7"><img src="assets\image\<?php echo $view['img']; ?>" class="w-100" alt=""></div>
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col">
+                                    <?php echo "<b>Tên Sản phẩm : </b>".$view['title']; ?>
+                                </div>
+                                <!-- ------------------------- -->
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <?php echo "<b>Mô tả : </b>".$view['body']; ?>
+                                </div>
+                                <!-- ------------------------- -->
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <?php echo "<b>Giá bán : </b>".$view['price']; ?>
+                                </div>
+                                <!-- ------------------------- -->
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <?php echo "<b>Ngày bán : </b>".$view['date']; ?>
+                                </div>
+                                <!-- ------------------------- -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <h5 class="mt-4">Sản phẩm liên quan</h5>
+                       <div class="row">
                         <?php foreach($result as $key => $value): ?>
                         <?php $tt=$value['body'];
                           if(strlen($tt)>45){
                           $tt=mb_substr($tt,0,50);
                           $tt=$tt."...";
                      }?>
-                        <div class="col-lg-4 col-md-4 col-sm-6 mt-4">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="card" style="width:100%;">
                                 <img src="<?php echo "assets/image/".$value['img'] ?>" class="card-img-top" height="145px" alt="...">
                                 <div class="card-body">
@@ -151,9 +190,24 @@ if(!$conn){
                         </div>
                         <?php endforeach; ?>
                     </div>
+
+
+
+
+
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+     </div>
         <!-- -------------------------------------------------------------------------------- -->
         <div class="row mt-4" style="background-color:#F1F3F4">
             <!-- <div class="col-12 bg-primary mt-4">ddaay la chan trang</div> -->
@@ -182,8 +236,8 @@ if(!$conn){
             <div class="col-md-4 col-lg-3">
                 <div class="container mt-2 mb-2">
                     <h5>Vị trí của tôi</h5>
-                    <iframe style="border:3px solid #6C757D;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.089259249516!2d105.95084102333253!3d20.932426206549696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135af4ef83c9fb7%3A0xc534a1e3f6a5aa24!2zQ2jhu6MgU-G7nyDEkMO0bmc!5e0!3m2!1svi!2sus!4v1608747879521!5m2!1svi!2sus"
-                        width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <iframe style="border:3px solid #6C757D;box-sizing: border-box;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.089259249516!2d105.95084102333253!3d20.932426206549696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135af4ef83c9fb7%3A0xc534a1e3f6a5aa24!2zQ2jhu6MgU-G7nyDEkMO0bmc!5e0!3m2!1svi!2sus!4v1608747879521!5m2!1svi!2sus"
+                        width="100%" height="100%" frameborder="0"  allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>
         </div>

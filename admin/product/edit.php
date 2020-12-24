@@ -40,7 +40,7 @@ $conn->close();
   <?php include("../../includes/adminSidebar.php") ?>
   <div class="col-md-9">
      <div class="main-view">
-    <h5><a href="create.php" class="btn btn-success">Thêm sản phẩm</a> <a href="index.php"  class="btn btn-success">Quản lý sản phẩm</a></h5>
+    <h5><a href="create.php" class="btn btn-success">Thêm sản phẩm</a> <a href="index.php"  class="btn btn-success">Xem lý sản phẩm</a></h5>
     <h2 class="h5-center pb-2">Sửa sản phẩm</h2>
     <div class="color-ad" style="min-height:350px" >
     <!-- --------------------------------------------------------------------------------------------------------- -->

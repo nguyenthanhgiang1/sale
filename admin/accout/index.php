@@ -1,18 +1,21 @@
 <?php 
 $conn=new mysqli('localhost','root','','sale');
 
-if(isset($_GET['del_idt'])){//xoa theo id
+if(isset($_GET['del_id'])){//xoa theo id
   //adminOnly();  // loi chi admin
-  $id=$_GET['del_idt'];
-  $sql= "DELETE FROM product WHERE id_type = $id"; 
-  $result=mysqli_query($conn,$sql);
-  $sql= "DELETE FROM type WHERE id_type = $id"; 
-  $result=mysqli_query($conn,$sql);
+  $id=$_GET['del_id'];
+  $sql= "DELETE FROM user WHERE id = $id";
+$result=mysqli_query($conn,$sql);
+  // $count =delete($table,$id);
+ // $_SESSION['message']='Topic deleted successfully'; 
+ // $_SESSION['type']='success';
+  //header('index.php');
+  //exit();
 }
 
 
 $sql='select * 
-from type';
+from user';
 $result=mysqli_query($conn,$sql);
 $pro=$result;
 $conn->close();
@@ -36,37 +39,45 @@ $conn->close();
         <?php include("../../includes/adminSidebar.php") ?>
         <div class="col-md-9">
             <div class="main-view">
-                <h5><a href="create.php" class="btn btn-success">Thêm thể loại</a> <a href="index.php" class="btn btn-success">Xem thể loại</a></h5>
-                <h2 class="h5-center pb-2">Quản lý thể loại sản phẩm</h2>
+                <h5><a href="create.php" class="btn btn-success">Thêm tài khoản</a> <a href="index.php" class="btn btn-success">Xem tài khoản</a></h5>
+                <h2 class="h5-center pb-2">Quản lý tài khoản</h2>
                 <div class="color-ad" style="min-height:350px">
                     <div class="row">
                         <div class="col-1">
                             <h5>Stt</h5>
                         </div>
+                        <div class="col-3">
+                            <h5>Tên tài khoản</h5>
+                        </div>
+                        <div class="col-3">
+                            <h5>Tên email</h5>
+                        </div>
                         <div class="col-2">
-                            <h5>Tên Thể loại</h5>
+                            <h5>Cấp quyền</h5>
                         </div>
-                        <div class="col-5">
-                            <h5>Mô tả</h5>
-                        </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <h5>Thao tác</h5>
                         </div>
                     </div>
                     <hr>
                     <?php foreach($pro as $key =>$p): ?>
                     <div class="row">
+
                         <div class="col-1">
                             <?php echo $key+1 ?>
                         </div>
+                        <div class="col-3">
+                            <?php echo $p['username'] ?>
+                        </div>
+
+                        <div class="col-3">
+                            <?php echo $p['email'] ?>
+                        </div>
                         <div class="col-2">
-                            <?php echo $p['name'] ?>
+                            <?php if($p['level']==0)echo "Người dùng"; else echo "<p style='color:blue;margin:0;'>Quản trị viên</p>" ?>
                         </div>
-                        <div class="col-5">
-                            <?php echo $p['des']  ?>
-                        </div>
-                        <div class="col-1"> <a href="edit.php?id=<?php echo $p['id_type'];?>" class="btn-outline-warning a-text">Sửa</a></div>
-                        <div class="col-2"> <a href="index.php?del_idt=<?php echo $p['id_type'];?>" class="btn-outline-danger a-text">Xóa</a></div>
+                        <div class="col-1"> <a href="edit.php?id=<?php echo $p['id'];?>" class="btn-outline-warning a-text">Sửa</a></div>
+                        <div class="col-2"> <a href="index.php?del_id=<?php echo $p['id'];?>" class="btn-outline-danger a-text">Xoa</a></div>
                     </div>
                     <hr>
                     <?php endforeach; ?>
