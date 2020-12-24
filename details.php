@@ -126,9 +126,9 @@ $tt=$view['id_type'];
                             </h5>
                         </div>
                         <div class="col-lg-5 col-md-6 col-6">
-                            <form class="d-flex" action="index.php" method="GET">
-                                <input class="form-control me-2" type="search" name="sea" placeholder="Nhập từ khóa" value="<?php if($t!=" "){echo $t;} ?>" aria-label="Search">
-                                <button class="btn btn-outline-success" name="search" type="submit">Tìm kiếm</button>
+                            <form class="d-flex" action="index.php" method="GET" style="height:45px;">
+                                <input class="form-control me-2" type="search" name="sea" placeholder="Bạn muốn tìm..." value="<?php if($t!=" "){echo $t;} ?>" aria-label="Search">
+                                <button class="btn btn-outline-success" name="search" type="submit">Tìm</button>
                             </form>
                         </div>
 
@@ -142,13 +142,7 @@ $tt=$view['id_type'];
                                 </div>
                                 <!-- ------------------------- -->
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <?php echo "<b>Mô tả : </b>".$view['body']; ?>
-                                </div>
-                                <!-- ------------------------- -->
-                            </div>
-                            <div class="row">
+                            <div class="row mt-2 mb-2">
                                 <div class="col">
                                     <?php echo "<b>Giá bán : </b>".$view['price']; ?>
                                 </div>
@@ -156,11 +150,17 @@ $tt=$view['id_type'];
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <?php echo "<b>Ngày bán : </b>".$view['date']; ?>
+                                    <?php echo "<b>Ngày đăng : </b>".$view['date']; ?>
                                 </div>
                                 <!-- ------------------------- -->
                             </div>
                         </div>
+                        <div class="row mt-2">
+                                <div class="col">
+                                    <?php echo "<b>Thông tin chi tiết : </b>".$view['body']; ?>
+                                </div>
+                                <!-- ------------------------- -->
+                            </div>
                     </div>
 
 

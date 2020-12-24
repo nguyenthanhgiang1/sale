@@ -144,29 +144,7 @@ if(isset($_POST['submit'])){
 
         </div>
         <!-- -------------------------------------------------------------------------------- -->
-        <div class="row  bg-success">
-            <!-- <div class="col-12 bg-primary mt-4">ddaay la chan trang</div> -->
-            <div class="col-md-4">
-                <div class="container mt-2 mb-2">
-                    <h5>Nguyễn Thành Giang</h5>
-                    <p class="mb-0 mt-0">0354785858</p>
-                    <p class="mb-0 mt-0">Địa chỉ thôn Sở Đông,xã Long Hưng, huyện Văn Giang, tỉnh Hưng Yên<a href="/sale/admin/product/index.php" style="color:black; text-decoration: none;">*</a> </p>
-                    <p class="mb-0 mt-0">giangnt623@wru.vn</p>
-                </div>
-            </div>
-            <div class="col-md-4 mt-2 mb-2">
-                <h5>Liên hệ với tôi</h5>
-                <form action="#" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email của bạn" name="title" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group mt-2">
-                        <textarea class="form-control" placeholder="Tin nhắn của bạn" name="body" id="floatingTextarea2" style="height: 80px; "></textarea>
-                    </div>
-                    <input type="submit" class="btn btn-primary mt-2" name="add-product" value="Gửi"></input>
-                </form>
-            </div>
-        </div>
+        <?php include("includes/footer.php") ?>
         <script src="assets/boot/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <script type="text/javascript" src="assets/boot/js/bootstrap.js"></script>
 
